@@ -1,12 +1,11 @@
-package testgroup.filmography.controller;
+package testgroup.crud.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import testgroup.filmography.model.User;
-import testgroup.filmography.service.UserServiceImpl;
+import testgroup.crud.model.User;
+import testgroup.crud.service.UserServiceImpl;
 
 
 @Controller
@@ -18,14 +17,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @Transactional
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("user", userService.allUsers());
         return "index";
     }
 
-    @Transactional
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.getById(id));
@@ -37,21 +34,18 @@ public class UserController {
         return "new";
     }
 
-    @Transactional
     @PostMapping()
     public String create(@ModelAttribute("user") User user) {
         userService.save(user);
         return "redirect:/";
     }
 
-    @Transactional
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.getById(id));
         return "edit";
     }
 
-    @Transactional
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") User user,
                          @PathVariable("id") int id) {
@@ -59,7 +53,6 @@ public class UserController {
         return "redirect:/";
     }
 
-    @Transactional
     @DeleteMapping("/{id}")
     public String delete(@ModelAttribute("user") User user) {
         userService.delete(user);

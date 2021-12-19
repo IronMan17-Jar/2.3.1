@@ -1,4 +1,4 @@
-package testgroup.filmography.config;
+package testgroup.crud.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -14,7 +14,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "testgroup.filmography")
+@ComponentScan(basePackages = "testgroup.crud")
 public class WebConfig implements WebMvcConfigurer {
 
     private final ApplicationContext context;
@@ -30,6 +30,7 @@ public class WebConfig implements WebMvcConfigurer {
         templateResolver.setApplicationContext(context);
         templateResolver.setPrefix("/WEB-INF/people/");
         templateResolver.setSuffix(".html");
+        templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;
     }
 
@@ -45,6 +46,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
+        resolver.setCharacterEncoding("UTF-8");
         registry.viewResolver(resolver);
     }
 }

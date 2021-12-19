@@ -1,4 +1,4 @@
-package testgroup.filmography.config;
+package testgroup.crud.config;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = "testgroup.filmography")
+@ComponentScan(basePackages = "testgroup.crud")
 @EnableTransactionManagement
 @PropertySource(value = "classpath:db.properties")
 public class HibernateConfig {
@@ -50,7 +50,7 @@ public class HibernateConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("testgroup.filmography.model");
+        em.setPackagesToScan("testgroup.crud.model");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(hibernateProperties());
         return em;

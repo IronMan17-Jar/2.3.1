@@ -1,4 +1,4 @@
-package testgroup.filmography.model;
+package testgroup.crud.model;
 
 import javax.persistence.*;
 
@@ -19,7 +19,7 @@ public class User {
     @Column(name = "lastName")
     private String lastName;
 
-    public User(){
+    public User() {
 
     }
 

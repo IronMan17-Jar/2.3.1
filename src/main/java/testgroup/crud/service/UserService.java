@@ -1,10 +1,10 @@
-package testgroup.filmography.dao;
+package testgroup.crud.service;
 
-import testgroup.filmography.model.User;
+import testgroup.crud.model.User;
 
 import java.util.List;
 
-public interface UserDAO {
+public interface UserService {
     List<User> allUsers();
 
     void save(User user);

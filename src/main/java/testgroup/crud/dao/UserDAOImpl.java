@@ -1,9 +1,8 @@
-package testgroup.filmography.dao;
+package testgroup.crud.dao;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import testgroup.filmography.model.User;
-
+import testgroup.crud.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.*;
@@ -45,6 +44,7 @@ public class UserDAOImpl implements UserDAO {
         entityManager.merge(updatedUser);
     }
 
+    @Transactional
     @Override
     public User getById(int id) {
         return entityManager.find(User.class, id);
