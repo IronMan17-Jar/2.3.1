@@ -20,21 +20,18 @@ public class UserDAOImpl implements UserDAO {
         return resultList;
     }
 
-    @Transactional
     @Override
     public void save(User user) {
         User merge = entityManager.merge(user);
         entityManager.persist(merge);
     }
 
-    @Transactional
     @Override
     public void delete(User user) {
         User merge = entityManager.find(User.class, user.getId());
         entityManager.remove(merge);
     }
 
-    @Transactional
     @Override
     public void update(User user, int id) {
         User updatedUser = getById(id);
@@ -44,7 +41,6 @@ public class UserDAOImpl implements UserDAO {
         entityManager.merge(updatedUser);
     }
 
-    @Transactional
     @Override
     public User getById(int id) {
         return entityManager.find(User.class, id);

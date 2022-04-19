@@ -5,15 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import testgroup.crud.model.User;
+import testgroup.crud.service.UserService;
 import testgroup.crud.service.UserServiceImpl;
 
 
 @Controller
 public class UserController {
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserServiceImpl userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
